@@ -47,7 +47,7 @@ A comprehensive Node.js application for authenticating and interacting with Sale
    Create a `.env` file in the project root:
    ```env
    CLIENT_ID=Your_Salesforce_Client_ID
-   CLIENT_SECRET=Your_Salesforce_Client_Secret
+   CLIENT_SECRET=Your_Salesforce_Client_SECRET
    REDIRECT_URI=https://your_redirect_uri
    PORT=3000
    AUTH_URL=https://login.salesforce.com/services/oauth2/authorize
@@ -121,14 +121,6 @@ salesforce-oauth-app/
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
 
 ## 📚 Additional Resources
 
