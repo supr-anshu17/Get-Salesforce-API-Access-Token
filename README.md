@@ -1,88 +1,137 @@
-**Salesforce OAuth App**
-A Node.js application for authenticating and interacting with Salesforce using OAuth 2.0.
-**Features**
-Authenticate with Salesforce via OAuth.
-Fetch an access token.
-Query Salesforce data like Accounts, Contacts, Leads, etc.
-Setup Guide
-Follow these steps to set up and run the application.
+# Salesforce OAuth App
 
-1. Clone the Repository
-First, clone the repository to your local machine:
+A comprehensive Node.js application for authenticating and interacting with Salesforce using OAuth 2.0.
 
-git clone https://github.com/your-username/salesforce-oauth-app.git
-Navigate to the project directory:
+## 🚀 Features
 
-cd salesforce-oauth-app
+* Seamless authentication with Salesforce via OAuth 2.0
+* Secure access token management
+* Powerful querying capabilities for Salesforce objects (Accounts, Contacts, Leads, etc.)
+* Environment-based configuration
+* Express.js powered web server
 
-**2. Install Required Packages**
-Install all dependencies using npm:
+## 📋 Prerequisites
 
-npm install
-The required packages are:
+* Node.js (v14 or higher)
+* npm (Node Package Manager)
+* A Salesforce Developer Account
+* A configured Salesforce Connected App
 
-express: For creating the server.
-axios: To make HTTP requests.
-dotenv: To securely handle environment variables.
-If you need to install these manually:
+## 🛠️ Installation
 
-npm install express axios dotenv
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/salesforce-oauth-app.git
+   cd salesforce-oauth-app
+   ```
 
-**3. Create a .env File**
-To securely store sensitive data like the client ID, client secret, and redirect URI, create a .env file in the root directory of the project.
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-Steps to Create .env File:
-Open the project directory in a code editor.
-Create a new file and name it .env.
-Add the following variables in the file:
+   Core dependencies include:
+   * `express` - Web application framework
+   * `axios` - HTTP client
+   * `dotenv` - Environment configuration
 
-CLIENT_ID=Your_Salesforce_Client_ID
-CLIENT_SECRET=Your_Salesforce_Client_Secret
-REDIRECT_URI=https://your_redirect_uri
-PORT=3000
-AUTH_URL=https://login.salesforce.com/services/oauth2/authorize
-TOKEN_URL=https://login.salesforce.com/services/oauth2/token
-Example .env File:
+   To install dependencies manually:
+   ```bash
+   npm install express axios dotenv
+   ```
 
-CLIENT_ID=3MVG9K5xxxxxxxxxx
-CLIENT_SECRET=ABC123xxxxxxxxxx
-REDIRECT_URI=http://localhost:3000/callback
-PORT=3000
-AUTH_URL=https://login.salesforce.com/services/oauth2/authorize
-TOKEN_URL=https://login.salesforce.com/services/oauth2/token
-**⚠️ Important: Never share your .env file or push it to GitHub!**
+## ⚙️ Configuration
 
-**4. Start the Application**
-Run the app using Node.js:
+1. **Create Environment File**
+   
+   Create a `.env` file in the project root:
+   ```env
+   CLIENT_ID=Your_Salesforce_Client_ID
+   CLIENT_SECRET=Your_Salesforce_Client_Secret
+   REDIRECT_URI=https://your_redirect_uri
+   PORT=3000
+   AUTH_URL=https://login.salesforce.com/services/oauth2/authorize
+   TOKEN_URL=https://login.salesforce.com/services/oauth2/token
+   ```
 
-**node app.js**
-The application will start on the specified port (default: 3000). Open your browser and go to:
+   Example configuration:
+   ```env
+   CLIENT_ID=3MVG9K5xxxxxxxxxx
+   CLIENT_SECRET=ABC123xxxxxxxxxx
+   REDIRECT_URI=http://localhost:3000/callback
+   PORT=3000
+   AUTH_URL=https://login.salesforce.com/services/oauth2/authorize
+   TOKEN_URL=https://login.salesforce.com/services/oauth2/token
+   ```
 
-http://localhost:3000
-How It Works
-Authenticate with Salesforce:
+   > ⚠️ **Security Warning**: Never commit your `.env` file to version control!
 
-The app redirects you to Salesforce's login page (using AUTH_URL).
-After login, Salesforce redirects back to your app with an authorization code.
-Fetch Access Token:
+## 🚀 Running the Application
 
-The app exchanges the authorization code for an access token (using TOKEN_URL).
-Use Access Token:
+1. **Start the Server**
+   ```bash
+   node app.js
+   ```
 
-The access token is used to interact with Salesforce's REST API to fetch or modify data.
+2. **Access the Application**
+   
+   Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-**Project Structure**   
-Get-Salesforce-API-Access-Token/
-├── app.js          # Main application file
-├── package.json    # Project configuration and dependencies
-├── node_modules/   # Installed dependencies
-├── .gitignore      # To exclude files like .env and node_modules
-└── .env            # Environment variables (not included in GitHub)
+## 🔄 Authentication Flow
 
-Ensure your Salesforce Connected App is set up correctly:
-Add your Redirect URI in the Salesforce connected app settings.
-Ensure API access is enabled for your app.
-Make sure the .env file includes valid CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, PORT, AUTH_URL, and TOKEN_URL.
+1. **Initial Authorization**
+   * User visits the application
+   * Application redirects to Salesforce login page
+   * User authenticates with Salesforce credentials
 
-License
-This project is licensed under the MIT License.
+2. **Token Exchange**
+   * Salesforce redirects back with authorization code
+   * Application exchanges code for access token
+   * Token is stored for API requests
+
+3. **API Usage**
+   * Application uses access token for Salesforce API requests
+   * Automatic token refresh when expired
+
+## 📁 Project Structure
+
+```
+salesforce-oauth-app/
+├── app.js              # Main application entry point
+├── package.json        # Project metadata and dependencies
+├── node_modules/       # Installed packages (generated)
+├── .gitignore         # Git ignore configuration
+└── .env               # Environment configuration (create this)
+```
+
+## 🔒 Salesforce Setup Requirements
+
+1. **Connected App Configuration**
+   * Configure Redirect URI in Salesforce Connected App settings
+   * Enable necessary OAuth scopes
+   * Ensure API access is enabled
+
+2. **User Permissions**
+   * Verify API access is enabled for user profile
+   * Configure appropriate object permissions
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📚 Additional Resources
+
+* [Salesforce OAuth Documentation](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm)
+* [Express.js Documentation](https://expressjs.com/)
+* [Node.js Documentation](https://nodejs.org/)
